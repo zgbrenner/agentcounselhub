@@ -77,11 +77,42 @@ Useful routes:
 /llms.txt
 ```
 
+## Ingestion scaffold
+
+The first ingestion scaffold lives in `pipelines/ingest`.
+
+It currently normalizes local CourtListener-shaped sample data into the AgentCounsel case record shape. It does not call live APIs yet.
+
+```bash
+python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
+  --input pipelines/ingest/samples/courtlistener_opinions_sample.json \
+  --output data/normalized/cases.seed.json
+```
+
+The data source registry lives at:
+
+```txt
+data/sources/legal-data-sources.json
+```
+
+## CI
+
+GitHub Actions validates:
+
+- web app typecheck
+- web app lint
+- web app build
+- ingestion script compilation
+- ingestion smoke test
+
 ## Repository map
 
 ```txt
 /apps/web                Next.js prototype app
+/data/sources            Machine-readable legal source registry
+/data/normalized         Generated normalized data output location
 /docs                    Product, architecture, data source, AI-readable, and licensing notes
+/pipelines/ingest        Data ingestion scaffolding
 CONTRIBUTING.md          Contribution guidelines
 ```
 
