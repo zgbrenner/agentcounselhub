@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentcounselhub.local/schemas/guidance-resource.schema.json",
+  "title": "AgentCounsel Hub Guidance Resource",
+  "description": "Schema for public practical guidance and template resource metadata used by AgentCounsel Hub.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "slug",
+      "title",
+      "publisher",
+      "url",
+      "category",
+      "jurisdiction",
+      "summary",
+      "tags",
+      "recommendedUse",
+      "licenseNote"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Stable internal guidance identifier."
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "description": "Stable kebab-case guidance slug."
+      },
+      "title": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Human-readable resource title."
+      },
+      "publisher": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Publishing organization or source."
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://",
+        "description": "Canonical public URL for the resource."
+      },
+      "category": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Resource category such as startup, consumer, court-self-help, agency, privacy, or template."
+      },
+      "jurisdiction": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Jurisdiction or general scope label."
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 10,
+        "description": "Concise, source-first summary."
+      },
+      "tags": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Search and filter tags."
+      },
+      "recommendedUse": {
+        "type": "string",
+        "enum": ["link_and_summarize", "store_metadata_only", "store_full_text"],
+        "description": "Conservative use recommendation for the resource."
+      },
+      "licenseNote": {
+        "type": "string",
+        "minLength": 10,
+        "description": "Reuse, attribution, storage, and caution note."
+      }
+    }
+  }
+}
