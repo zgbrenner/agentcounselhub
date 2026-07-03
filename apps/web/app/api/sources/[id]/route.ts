@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { getSourceById } from "@/lib/sourceRegistry";
+import { getAllSources, getSourceById } from "@/lib/sourceRegistry";
+
+export function generateStaticParams() {
+  return getAllSources().map((source) => ({ id: source.id }));
+}
 
 export function GET(_request: Request, { params }: { params: { id: string } }) {
   const source = getSourceById(params.id);
