@@ -1,16 +1,12 @@
 # AgentCounsel Hub
 
-AgentCounsel Hub is an open legal research platform prototype with human-readable pages and machine-readable endpoints.
+AgentCounsel Hub is an open legal research platform prototype with human-readable pages and static-export-safe machine-readable endpoints.
 
 ## Preferred AI endpoints
 
-- /api/cases
-- /api/cases/:slug
 - /api/cases/:slug/markdown
 - /api/cases/schema
-- /api/guidance
 - /api/guidance/schema
-- /api/sources
 - /api/sources/:id
 - /api/sources/schema
 - /cases/:slug/json
@@ -38,10 +34,11 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - Do not treat summaries, topic labels, or treatment signals as legal advice.
 - AI-generated metadata is labeled where possible.
 - Respect source-specific license and attribution notes.
-- Prefer API endpoints over scraping HTML pages.
+- Prefer static JSON and Markdown endpoints over scraping HTML pages.
+- Use /cases/:slug/json for case record data.
 - Use /api/cases/schema to inspect the normalized case record contract.
 - Use /api/guidance/schema to inspect the practical guidance resource contract.
-- Use /api/sources to inspect source provenance and reuse notes.
+- Use /api/sources/:id to inspect source provenance and reuse notes.
 - Use /api/sources/schema to inspect the source registry contract.
 - Use /review/proposals to export approved local review items as source registry candidates.
 
