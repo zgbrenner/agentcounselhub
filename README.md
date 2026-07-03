@@ -44,6 +44,7 @@ Current prototype includes:
 - Experimental treatment-signal display with confidence/review metadata
 - JSON and Markdown case endpoints
 - Practical guidance index
+- Source registry page and API
 - Local saved folders using IndexedDB
 - Local/mock submission form
 - `llms.txt`
@@ -72,6 +73,8 @@ Useful routes:
 /api/cases/miranda-v-arizona
 /api/cases/miranda-v-arizona/markdown
 /guidance
+/sources
+/api/sources
 /saved
 /submit
 /llms.txt
@@ -84,9 +87,19 @@ The first ingestion scaffold lives in `pipelines/ingest`.
 It currently normalizes local CourtListener-shaped sample data into the AgentCounsel case record shape. It does not call live APIs yet.
 
 ```bash
+pnpm ingest:seed
+```
+
+That command runs:
+
+```bash
 python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
   --input pipelines/ingest/samples/courtlistener_opinions_sample.json \
   --output data/normalized/cases.seed.json
+
+python pipelines/ingest/scripts/write_web_seed.py \
+  --input data/normalized/cases.seed.json \
+  --output apps/web/data/generated/cases.generated.json
 ```
 
 The data source registry lives at:
@@ -103,12 +116,14 @@ GitHub Actions validates:
 - web app lint
 - web app build
 - ingestion script compilation
-- ingestion smoke test
+- ingestion normalization smoke test
+- web seed writer smoke test
 
 ## Repository map
 
 ```txt
 /apps/web                Next.js prototype app
+/apps/web/data/generated Generated app-ready seed output location
 /data/sources            Machine-readable legal source registry
 /data/normalized         Generated normalized data output location
 /docs                    Product, architecture, data source, AI-readable, and licensing notes

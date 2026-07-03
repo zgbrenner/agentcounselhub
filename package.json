@@ -8,7 +8,8 @@
     "build": "pnpm --filter @agentcounsel/web build",
     "start": "pnpm --filter @agentcounsel/web start",
     "lint": "pnpm --filter @agentcounsel/web lint",
-    "typecheck": "pnpm --filter @agentcounsel/web typecheck"
+    "typecheck": "pnpm --filter @agentcounsel/web typecheck",
+    "ingest:seed": "python pipelines/ingest/scripts/normalize_courtlistener_seed.py --input pipelines/ingest/samples/courtlistener_opinions_sample.json --output data/normalized/cases.seed.json && python pipelines/ingest/scripts/write_web_seed.py --input data/normalized/cases.seed.json --output apps/web/data/generated/cases.generated.json"
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
