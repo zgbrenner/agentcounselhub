@@ -24,6 +24,17 @@ python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
 
 The current script normalizes local sample data only. It does not call live APIs yet.
 
+## Source registry validation
+
+Validate the current source registry before and after source changes:
+
+```bash
+python pipelines/ingest/scripts/validate_source_registry.py \
+  --registry data/sources/legal-data-sources.json
+```
+
+The validator checks required fields, HTTP(S) URLs, supported source types, duplicate source IDs, duplicate homepages, and reuse-field value types.
+
 ## Source proposal import
 
 Approved review items can be exported from `/review/proposals` as candidate source records. The importer validates that proposal file and writes a proposed source registry output.
