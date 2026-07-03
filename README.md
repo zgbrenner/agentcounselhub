@@ -95,25 +95,19 @@ It currently normalizes local CourtListener-shaped sample data into the AgentCou
 pnpm ingest:seed
 ```
 
-That command runs:
+Approved local review items can be exported from `/review/proposals` as candidate source records. To validate and merge the sample proposal export into a proposed registry file:
 
 ```bash
-python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
-  --input pipelines/ingest/samples/courtlistener_opinions_sample.json \
-  --output data/normalized/cases.seed.json
-
-python pipelines/ingest/scripts/write_web_seed.py \
-  --input data/normalized/cases.seed.json \
-  --output apps/web/data/generated/cases.generated.json
+pnpm sources:propose
 ```
+
+The command writes `data/sources/legal-data-sources.proposed.json` for review.
 
 The data source registry lives at:
 
 ```txt
 data/sources/legal-data-sources.json
 ```
-
-Approved local review items can be exported from `/review/proposals` as candidate source records before being manually added to the registry.
 
 ## CI
 
@@ -125,6 +119,7 @@ GitHub Actions validates:
 - ingestion script compilation
 - ingestion normalization smoke test
 - web seed writer smoke test
+- source proposal import smoke test
 
 ## Repository map
 
