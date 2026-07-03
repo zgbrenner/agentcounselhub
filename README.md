@@ -95,6 +95,7 @@ It currently normalizes local CourtListener-shaped sample data into the AgentCou
 
 ```bash
 pnpm ingest:seed
+pnpm cases:validate
 ```
 
 Approved local review items can be exported from `/review/proposals` as candidate source records. To validate and merge the sample proposal export into a proposed registry file:
@@ -120,6 +121,13 @@ docs/SOURCE_REGISTRY_CONTRACT.md
 /api/sources/schema
 ```
 
+The normalized case schema and field guide live at:
+
+```txt
+data/cases/case-record.schema.json
+docs/CASE_RECORD_CONTRACT.md
+```
+
 Validate the source registry and schema with:
 
 ```bash
@@ -136,6 +144,7 @@ GitHub Actions validates:
 - source registry and schema validation
 - ingestion script compilation
 - ingestion normalization smoke test
+- normalized case record validation
 - web seed writer smoke test
 - source proposal import smoke test
 
@@ -144,9 +153,10 @@ GitHub Actions validates:
 ```txt
 /apps/web                Next.js prototype app
 /apps/web/data/generated Generated app-ready seed output location
+/data/cases              Machine-readable case record schema
 /data/sources            Machine-readable legal source registry and schema
 /data/normalized         Generated normalized data output location
-/docs                    Product, architecture, data source, AI-readable, licensing, and source-contract notes
+/docs                    Product, architecture, data source, AI-readable, licensing, and contract notes
 /pipelines/ingest        Data ingestion scaffolding
 CONTRIBUTING.md          Contribution guidelines
 ```
