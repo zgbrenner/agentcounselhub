@@ -52,10 +52,13 @@ jobs:
           python-version: "3.12"
 
       - name: Compile ingestion scripts
-        run: python -m py_compile pipelines/ingest/scripts/normalize_courtlistener_seed.py pipelines/ingest/scripts/write_web_seed.py
+        run: python -m py_compile pipelines/ingest/scripts/normalize_courtlistener_seed.py pipelines/ingest/scripts/write_web_seed.py pipelines/ingest/scripts/import_source_proposals.py
 
       - name: Run normalization smoke test
         run: python pipelines/ingest/scripts/normalize_courtlistener_seed.py --input pipelines/ingest/samples/courtlistener_opinions_sample.json --output data/normalized/cases.seed.json
 
       - name: Run web seed smoke test
         run: python pipelines/ingest/scripts/write_web_seed.py --input data/normalized/cases.seed.json --output apps/web/data/generated/cases.generated.json
+
+      - name: Run source proposal import smoke test
+        run: python pipelines/ingest/scripts/import_source_proposals.py --registry data/sources/legal-data-sources.json --proposals pipelines/ingest/samples/source_proposals_sample.json --output data/sources/legal-data-sources.proposed.json
