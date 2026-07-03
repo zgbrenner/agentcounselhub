@@ -44,7 +44,7 @@ Current prototype includes:
 - Experimental treatment-signal display with confidence/review metadata
 - JSON and Markdown case endpoints
 - Practical guidance index
-- Source registry list, detail pages, schema, and API
+- Source registry list, detail pages, schema, and static-safe API leaves
 - Local saved folders using IndexedDB
 - Local submission, review queue, review history, and source proposal workflow
 - `llms.txt`
@@ -70,18 +70,14 @@ Useful routes:
 /cases/miranda-v-arizona/json
 /cases/miranda-v-arizona/markdown
 /cases/schema
-/api/cases
-/api/cases/miranda-v-arizona
 /api/cases/miranda-v-arizona/markdown
 /api/cases/schema
 /guidance
 /guidance/schema
-/api/guidance
 /api/guidance/schema
 /sources
 /sources/courtlistener
 /sources/schema
-/api/sources
 /api/sources/courtlistener
 /api/sources/schema
 /review
@@ -108,7 +104,7 @@ Expected public URL:
 https://zgbrenner.github.io/agentcounselhub/
 ```
 
-Because GitHub Pages is static hosting, routes are generated at build time from the seed data and local JSON contracts.
+Because GitHub Pages is static hosting, routes are generated at build time from the seed data and local JSON contracts. Route-handler paths are kept as leaf routes to avoid file/directory collisions during static export.
 
 ## Ingestion scaffold
 
