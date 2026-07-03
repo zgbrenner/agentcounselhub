@@ -1,0 +1,18 @@
+{
+  "exportedAt": "2026-07-03T00:00:00.000Z",
+  "proposals": [
+    {
+      "id": "national-archives-founding-documents",
+      "name": "National Archives Founding Documents",
+      "type": "guidance",
+      "homepageUrl": "https://www.archives.gov/founding-docs",
+      "accessMethod": "web",
+      "recommendedUse": "link_and_summarize",
+      "priority": "reviewed_candidate",
+      "attributionRequired": true,
+      "notes": "Sample reviewed candidate for source proposal import testing.",
+      "proposedFromReviewId": "sample-review-item",
+      "proposedAt": "2026-07-03T00:00:00.000Z"
+    }
+  ]
+}
