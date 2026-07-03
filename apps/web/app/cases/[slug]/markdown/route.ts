@@ -1,5 +1,12 @@
-import { getCaseBySlug } from "@/lib/data";
+import { getAllCases, getCaseBySlug } from "@/lib/data";
 import { caseToMarkdown } from "@/lib/markdown";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getAllCases().map((caseRecord) => ({ slug: caseRecord.slug }));
+}
 
 export function GET(_request: Request, { params }: { params: { slug: string } }) {
   const record = getCaseBySlug(params.slug);
