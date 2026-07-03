@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SubmissionForm } from "@/components/SubmissionForm";
 
 export default function SubmitPage() {
@@ -8,8 +9,11 @@ export default function SubmitPage() {
           <p className="eyebrow">Community submissions</p>
           <h1>Suggest a source, correction, or update.</h1>
           <p>
-            This MVP stores submissions locally as a mock review queue. The next version can move submissions into a server-side triage workflow with duplicate checks, source review, and attorney-aware approvals.
+            This MVP stores submissions locally. The next version can move submissions into a server-side workflow with duplicate checks, source review, and attorney-aware approvals.
           </p>
+          <div className="button-row">
+            <Link className="secondary-button" href="/review">Open local review page</Link>
+          </div>
         </div>
       </section>
       <SubmissionForm />
