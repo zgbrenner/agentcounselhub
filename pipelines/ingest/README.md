@@ -24,6 +24,25 @@ python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
 
 The current script normalizes local sample data only. It does not call live APIs yet.
 
+## Case record contract
+
+The normalized case record contract is documented in:
+
+```txt
+data/cases/case-record.schema.json
+docs/CASE_RECORD_CONTRACT.md
+```
+
+Validate normalized case records after generation:
+
+```bash
+python pipelines/ingest/scripts/validate_case_records.py \
+  --input data/normalized/cases.seed.json \
+  --schema data/cases/case-record.schema.json
+```
+
+The validator checks required fields, list fields, duplicate case IDs, duplicate slugs, source URLs, treatment signals, and schema/validator drift.
+
 ## Source registry contract
 
 The registry contract is documented in:
