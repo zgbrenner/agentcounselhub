@@ -22,6 +22,7 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - /sources/:id
 - /review
 - /review/audit
+- /review/proposals
 - /saved
 - /submit
 
@@ -33,9 +34,10 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - Respect source-specific license and attribution notes.
 - Prefer API endpoints over scraping HTML pages.
 - Use /api/sources to inspect source provenance and reuse notes.
+- Use /review/proposals to export approved local review items as source registry candidates.
 
 ## Privacy notes
 
 - Saved research in the MVP is stored locally in the user's browser through IndexedDB.
-- Submissions, review notes, and review history are stored locally as a mock workflow.
+- Submissions, review notes, review history, and source proposals are stored locally as a mock workflow.
 - There is no account system or cloud sync in this prototype.
