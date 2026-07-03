@@ -75,6 +75,9 @@ Useful routes:
 /api/cases/miranda-v-arizona/markdown
 /api/cases/schema
 /guidance
+/guidance/schema
+/api/guidance
+/api/guidance/schema
 /sources
 /sources/courtlistener
 /sources/schema
@@ -132,6 +135,15 @@ docs/CASE_RECORD_CONTRACT.md
 /api/cases/schema
 ```
 
+The guidance resource schema and field guide live at:
+
+```txt
+data/guidance/guidance-resource.schema.json
+docs/GUIDANCE_RESOURCE_CONTRACT.md
+/guidance/schema
+/api/guidance/schema
+```
+
 Validate the source registry and schema with:
 
 ```bash
@@ -158,6 +170,7 @@ GitHub Actions validates:
 /apps/web                Next.js prototype app
 /apps/web/data/generated Generated app-ready seed output location
 /data/cases              Machine-readable case record schema
+/data/guidance           Machine-readable guidance resource schema
 /data/sources            Machine-readable legal source registry and schema
 /data/normalized         Generated normalized data output location
 /docs                    Product, architecture, data source, AI-readable, licensing, and contract notes
