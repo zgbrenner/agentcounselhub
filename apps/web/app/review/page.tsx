@@ -13,6 +13,7 @@ export default function ReviewPage() {
           </p>
           <div className="button-row">
             <Link className="secondary-button" href="/review/audit">View review history</Link>
+            <Link className="secondary-button" href="/review/proposals">View source proposals</Link>
           </div>
         </div>
       </section>
