@@ -46,7 +46,7 @@ Current prototype includes:
 - Practical guidance index
 - Source registry list, detail pages, and API
 - Local saved folders using IndexedDB
-- Local submission, review queue, and review history workflow
+- Local submission, review queue, review history, and source proposal workflow
 - `llms.txt`
 
 ## Running locally
@@ -79,6 +79,7 @@ Useful routes:
 /api/sources/courtlistener
 /review
 /review/audit
+/review/proposals
 /saved
 /submit
 /llms.txt
@@ -111,6 +112,8 @@ The data source registry lives at:
 ```txt
 data/sources/legal-data-sources.json
 ```
+
+Approved local review items can be exported from `/review/proposals` as candidate source records before being manually added to the registry.
 
 ## CI
 
