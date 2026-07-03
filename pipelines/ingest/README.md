@@ -14,7 +14,7 @@ The ingestion layer should be conservative by default:
 
 The first real adapter should target CourtListener / Free Law Project metadata and opinions because it is the strongest starting point for open legal research data.
 
-## Local prototype command
+## Local case seed command
 
 ```bash
 python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
@@ -23,3 +23,16 @@ python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
 ```
 
 The current script normalizes local sample data only. It does not call live APIs yet.
+
+## Source proposal import
+
+Approved review items can be exported from `/review/proposals` as candidate source records. The importer validates that proposal file and writes a proposed source registry output.
+
+```bash
+python pipelines/ingest/scripts/import_source_proposals.py \
+  --registry data/sources/legal-data-sources.json \
+  --proposals pipelines/ingest/samples/source_proposals_sample.json \
+  --output data/sources/legal-data-sources.proposed.json
+```
+
+The importer rejects duplicate source IDs and duplicate homepages so contributors can review proposed registry changes before committing them.
