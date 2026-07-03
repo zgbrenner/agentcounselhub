@@ -8,9 +8,6 @@ const nextConfig = {
   assetPrefix: isGitHubPages ? "/agentcounselhub/" : "",
   images: {
     unoptimized: true
-  },
-  experimental: {
-    typedRoutes: true
   }
 };
 
