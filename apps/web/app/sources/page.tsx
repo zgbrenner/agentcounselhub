@@ -22,6 +22,10 @@ export default function SourcesPage() {
           <p>
             AgentCounsel Hub should not treat public access as permission to copy. This registry tracks data origins, access methods, and reuse cautions before ingestion.
           </p>
+          <div className="button-row">
+            <Link className="secondary-button" href="/sources/schema">View registry contract</Link>
+            <Link className="secondary-button" href="/api/sources/schema">Schema JSON</Link>
+          </div>
         </div>
         <aside className="hero-card">
           <span className="eyebrow">Registry snapshot</span>
