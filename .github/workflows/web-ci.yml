@@ -38,6 +38,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Build GitHub Pages export
+        run: pnpm build:pages
+
   ingestion:
     name: Validate ingestion scripts
     runs-on: ubuntu-latest
