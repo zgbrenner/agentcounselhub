@@ -44,9 +44,10 @@ Current prototype includes:
 - Experimental treatment-signal display with confidence/review metadata
 - JSON and Markdown case endpoints
 - Practical guidance index
-- Source registry page and API
+- Source registry page, detail pages, and API
 - Local saved folders using IndexedDB
 - Local/mock submission form
+- Local submission review page
 - `llms.txt`
 
 ## Running locally
@@ -74,9 +75,12 @@ Useful routes:
 /api/cases/miranda-v-arizona/markdown
 /guidance
 /sources
+/sources/courtlistener
 /api/sources
+/api/sources/courtlistener
 /saved
 /submit
+/review
 /llms.txt
 ```
 

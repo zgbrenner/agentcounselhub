@@ -9,6 +9,7 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - /api/cases/:slug/markdown
 - /api/guidance
 - /api/sources
+- /api/sources/:id
 - /cases/:slug/json
 - /cases/:slug/markdown
 
@@ -18,8 +19,10 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - /cases/:slug
 - /guidance
 - /sources
+- /sources/:id
 - /saved
 - /submit
+- /review
 
 ## Usage notes
 

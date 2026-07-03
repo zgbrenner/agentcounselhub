@@ -23,6 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/sources">Sources</Link>
               <Link href="/saved">Saved</Link>
               <Link href="/submit">Submit</Link>
+              <Link href="/review">Review</Link>
             </nav>
           </header>
           <main className="main">{children}</main>
