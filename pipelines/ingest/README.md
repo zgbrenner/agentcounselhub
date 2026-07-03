@@ -24,16 +24,28 @@ python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
 
 The current script normalizes local sample data only. It does not call live APIs yet.
 
+## Source registry contract
+
+The registry contract is documented in:
+
+```txt
+data/sources/legal-data-sources.schema.json
+docs/SOURCE_REGISTRY_CONTRACT.md
+```
+
+Use the contract before adding new sources or changing source fields.
+
 ## Source registry validation
 
 Validate the current source registry before and after source changes:
 
 ```bash
 python pipelines/ingest/scripts/validate_source_registry.py \
-  --registry data/sources/legal-data-sources.json
+  --registry data/sources/legal-data-sources.json \
+  --schema data/sources/legal-data-sources.schema.json
 ```
 
-The validator checks required fields, HTTP(S) URLs, supported source types, duplicate source IDs, duplicate homepages, and reuse-field value types.
+The validator checks required fields, HTTP(S) URLs, supported source types, duplicate source IDs, duplicate homepages, reuse-field value types, and schema/validator drift.
 
 ## Source proposal import
 
