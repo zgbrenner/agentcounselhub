@@ -69,9 +69,11 @@ Useful routes:
 /cases/miranda-v-arizona
 /cases/miranda-v-arizona/json
 /cases/miranda-v-arizona/markdown
+/cases/schema
 /api/cases
 /api/cases/miranda-v-arizona
 /api/cases/miranda-v-arizona/markdown
+/api/cases/schema
 /guidance
 /sources
 /sources/courtlistener
@@ -126,6 +128,8 @@ The normalized case schema and field guide live at:
 ```txt
 data/cases/case-record.schema.json
 docs/CASE_RECORD_CONTRACT.md
+/cases/schema
+/api/cases/schema
 ```
 
 Validate the source registry and schema with:
