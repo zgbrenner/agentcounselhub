@@ -29,31 +29,61 @@ Initial MVP features:
 9. Submission form for cases, guidance links, templates, corrections, and updates.
 10. Clear open-source documentation and contribution guidelines.
 
+## Prototype app
+
+The first working scaffold lives in `apps/web`.
+
+Current prototype includes:
+
+- Next.js / React / TypeScript app shell
+- Seed case-law records
+- Search and filtering by keyword, court, jurisdiction, and topic
+- Case detail pages
+- Basic citation generator
+- Basic `cites` and `cited by` relationship display
+- Experimental treatment-signal display with confidence/review metadata
+- JSON and Markdown case endpoints
+- Practical guidance index
+- Local saved folders using IndexedDB
+- Local/mock submission form
+- `llms.txt`
+
+## Running locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Then open the web app at:
+
+```txt
+http://localhost:3000
+```
+
+Useful routes:
+
+```txt
+/cases
+/cases/miranda-v-arizona
+/cases/miranda-v-arizona/json
+/cases/miranda-v-arizona/markdown
+/api/cases
+/api/cases/miranda-v-arizona
+/api/cases/miranda-v-arizona/markdown
+/guidance
+/saved
+/submit
+/llms.txt
+```
+
 ## Repository map
 
 ```txt
-/docs
-  PRODUCT_PLAN.md          Full product concept and pillars
-  MVP_ROADMAP.md           First build sequence
-  ARCHITECTURE.md          Proposed technical architecture
-  DATA_SOURCES.md          Open legal data and practical guidance source registry
-  AI_READABLE_SPEC.md      Machine-readable page/API design
-  LICENSING_NOTES.md       Reuse, linking, attribution, and data-license cautions
+/apps/web                Next.js prototype app
+/docs                    Product, architecture, data source, AI-readable, and licensing notes
+CONTRIBUTING.md          Contribution guidelines
 ```
-
-## Current status
-
-This repo is at the planning/scaffolding stage.
-
-The immediate next step is to turn the plan into a small working prototype:
-
-- Next.js app shell
-- searchable case index mock
-- case detail page
-- JSON/Markdown case endpoints
-- local saved folders
-- source registry
-- submission form
 
 ## Important disclaimer
 

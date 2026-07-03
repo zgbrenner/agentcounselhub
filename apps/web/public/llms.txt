@@ -1,0 +1,34 @@
+# AgentCounsel Hub
+
+AgentCounsel Hub is an open legal research platform prototype with human-readable pages and machine-readable endpoints.
+
+## Preferred AI endpoints
+
+- /api/cases
+- /api/cases/:slug
+- /api/cases/:slug/markdown
+- /api/guidance
+- /cases/:slug/json
+- /cases/:slug/markdown
+
+## Human routes
+
+- /cases
+- /cases/:slug
+- /guidance
+- /saved
+- /submit
+
+## Usage notes
+
+- Verify legal conclusions against primary sources.
+- Do not treat summaries, topic labels, or treatment signals as legal advice.
+- AI-generated metadata is labeled where possible.
+- Respect source-specific license and attribution notes.
+- Prefer API endpoints over scraping HTML pages.
+
+## Privacy notes
+
+- Saved research in the MVP is stored locally in the user's browser through IndexedDB.
+- Submissions in the MVP are stored locally as a mock flow.
+- There is no account system or cloud sync in this prototype.
