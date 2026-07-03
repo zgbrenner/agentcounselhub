@@ -44,7 +44,7 @@ Current prototype includes:
 - Experimental treatment-signal display with confidence/review metadata
 - JSON and Markdown case endpoints
 - Practical guidance index
-- Source registry list, detail pages, and API
+- Source registry list, detail pages, schema, and API
 - Local saved folders using IndexedDB
 - Local submission, review queue, review history, and source proposal workflow
 - `llms.txt`
@@ -109,7 +109,14 @@ The data source registry lives at:
 data/sources/legal-data-sources.json
 ```
 
-Validate the source registry with:
+The registry schema and field guide live at:
+
+```txt
+data/sources/legal-data-sources.schema.json
+docs/SOURCE_REGISTRY_CONTRACT.md
+```
+
+Validate the source registry and schema with:
 
 ```bash
 pnpm sources:validate
@@ -122,7 +129,7 @@ GitHub Actions validates:
 - web app typecheck
 - web app lint
 - web app build
-- source registry validation
+- source registry and schema validation
 - ingestion script compilation
 - ingestion normalization smoke test
 - web seed writer smoke test
@@ -133,9 +140,9 @@ GitHub Actions validates:
 ```txt
 /apps/web                Next.js prototype app
 /apps/web/data/generated Generated app-ready seed output location
-/data/sources            Machine-readable legal source registry
+/data/sources            Machine-readable legal source registry and schema
 /data/normalized         Generated normalized data output location
-/docs                    Product, architecture, data source, AI-readable, and licensing notes
+/docs                    Product, architecture, data source, AI-readable, licensing, and source-contract notes
 /pipelines/ingest        Data ingestion scaffolding
 CONTRIBUTING.md          Contribution guidelines
 ```
