@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentcounselhub.local/schemas/case-record.schema.json",
+  "title": "AgentCounsel Hub Normalized Case Record",
+  "description": "Schema for normalized case-law records produced by ingestion pipelines before app rendering.",
+  "type": "object",
+  "required": ["generatedAt", "source", "records"],
+  "properties": {
+    "generatedAt": {
+      "type": "string",
+      "description": "UTC timestamp for the normalized export."
+    },
+    "source": {
+      "type": "string",
+      "description": "Pipeline/source identifier for the export."
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "citations",
+          "court",
+          "jurisdiction",
+          "dateDecided",
+          "judges",
+          "proceduralPosture",
+          "topics",
+          "summary",
+          "holding",
+          "sourceUrl",
+          "sourceName",
+          "licenseNote",
+          "citedCaseIds",
+          "citedByCaseIds",
+          "treatmentSignals",
+          "aiGeneratedFields",
+          "attorneyReviewed",
+          "retrievedAt",
+          "rawSourceId"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "citations": { "type": "array", "items": { "type": "string" } },
+          "court": { "type": "string" },
+          "jurisdiction": { "type": "string" },
+          "dateDecided": { "type": "string" },
+          "judges": { "type": "array", "items": { "type": "string" } },
+          "proceduralPosture": { "type": "string" },
+          "topics": { "type": "array", "items": { "type": "string" } },
+          "summary": { "type": "string" },
+          "holding": { "type": "string" },
+          "sourceUrl": { "type": "string", "format": "uri", "pattern": "^https?://" },
+          "sourceName": { "type": "string" },
+          "licenseNote": { "type": "string" },
+          "citedCaseIds": { "type": "array", "items": { "type": "string" } },
+          "citedByCaseIds": { "type": "array", "items": { "type": "string" } },
+          "treatmentSignals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["citingCaseId", "citedCaseId", "treatment", "confidence", "reviewStatus"],
+              "properties": {
+                "citingCaseId": { "type": "string" },
+                "citedCaseId": { "type": "string" },
+                "treatment": { "type": "string", "enum": ["cited", "followed", "distinguished", "criticized", "questioned", "overruled", "superseded", "unknown"] },
+                "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                "reviewStatus": { "type": "string", "enum": ["source", "ai_unreviewed", "human_reviewed"] },
+                "evidence": { "type": "string" }
+              }
+            }
+          },
+          "aiGeneratedFields": { "type": "array", "items": { "type": "string" } },
+          "attorneyReviewed": { "type": "boolean" },
+          "retrievedAt": { "type": "string" },
+          "rawSourceId": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
