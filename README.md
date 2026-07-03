@@ -46,7 +46,7 @@ Current prototype includes:
 - Practical guidance index
 - Source registry list, detail pages, and API
 - Local saved folders using IndexedDB
-- Local submission and review queue workflow
+- Local submission, review queue, and review history workflow
 - `llms.txt`
 
 ## Running locally
@@ -78,6 +78,7 @@ Useful routes:
 /api/sources
 /api/sources/courtlistener
 /review
+/review/audit
 /saved
 /submit
 /llms.txt
