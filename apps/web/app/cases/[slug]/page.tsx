@@ -4,6 +4,8 @@ import { SaveCaseButton } from "@/components/SaveCaseButton";
 import { formatBluebookLite, formatNeutralCitation } from "@/lib/citations";
 import { getAllCases, getCaseBySlug, getRelatedCases } from "@/lib/data";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllCases().map((caseRecord) => ({ slug: caseRecord.slug }));
 }

@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getAllCases, getCaseBySlug, getRelatedCases } from "@/lib/data";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllCases().map((caseRecord) => ({ slug: caseRecord.slug }));
 }

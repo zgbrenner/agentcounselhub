@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSources, getSourceById } from "@/lib/sourceRegistry";
 
+export const dynamicParams = false;
+
 function formatValue(value: boolean | string) {
   if (typeof value === "boolean") {
     return value ? "yes" : "no";
@@ -42,7 +44,7 @@ export default function SourceDetailPage({ params }: { params: { id: string } })
             Recommended use: <strong>{source.recommendedUse.replaceAll("_", " ")}</strong>.
           </p>
           <p>
-            Before storing text from this source, verify the latest terms, attribution requirements, and redistribution limits.
+            Verify the latest terms, attribution requirements, and redistribution limits before production use.
           </p>
           <div className="button-row">
             <a className="button" href={source.homepageUrl}>Open homepage</a>
