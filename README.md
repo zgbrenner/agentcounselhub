@@ -92,6 +92,24 @@ Useful routes:
 /llms.txt
 ```
 
+## GitHub Pages deployment
+
+The app is configured for static export and GitHub Pages deployment.
+
+```bash
+pnpm build:pages
+```
+
+GitHub Actions deploys `apps/web/out` to Pages on every push to `main` through `.github/workflows/deploy-pages.yml`.
+
+Expected public URL:
+
+```txt
+https://zgbrenner.github.io/agentcounselhub/
+```
+
+Because GitHub Pages is static hosting, routes are generated at build time from the seed data and local JSON contracts.
+
 ## Ingestion scaffold
 
 The first ingestion scaffold lives in `pipelines/ingest`.
@@ -157,6 +175,7 @@ GitHub Actions validates:
 - web app typecheck
 - web app lint
 - web app build
+- GitHub Pages static export
 - source registry and schema validation
 - ingestion script compilation
 - ingestion normalization smoke test

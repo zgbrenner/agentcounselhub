@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { getCaseBySlug, getRelatedCases } from "@/lib/data";
+import { getAllCases, getCaseBySlug, getRelatedCases } from "@/lib/data";
+
+export function generateStaticParams() {
+  return getAllCases().map((caseRecord) => ({ slug: caseRecord.slug }));
+}
 
 export function GET(_request: Request, { params }: { params: { slug: string } }) {
   const caseRecord = getCaseBySlug(params.slug);

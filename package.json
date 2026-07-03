@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @agentcounsel/web dev",
     "build": "pnpm --filter @agentcounsel/web build",
+    "build:pages": "GITHUB_PAGES=true pnpm --filter @agentcounsel/web build",
     "start": "pnpm --filter @agentcounsel/web start",
     "lint": "pnpm --filter @agentcounsel/web lint",
     "typecheck": "pnpm --filter @agentcounsel/web typecheck",
