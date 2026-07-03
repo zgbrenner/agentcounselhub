@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getAllSources, getSourceStats } from "@/lib/sourceRegistry";
 
 function formatBooleanLike(value: boolean | string) {
@@ -19,7 +20,7 @@ export default function SourcesPage() {
           <p className="eyebrow">Source registry</p>
           <h1>Every source needs provenance.</h1>
           <p>
-            AgentCounsel Hub should not treat public access as permission to copy. This registry tracks where data comes from, how it can be accessed, and what reuse cautions apply before ingestion.
+            AgentCounsel Hub should not treat public access as permission to copy. This registry tracks data origins, access methods, and reuse cautions before ingestion.
           </p>
         </div>
         <aside className="hero-card">
@@ -52,7 +53,8 @@ export default function SourcesPage() {
               <div><dt>Redistribute</dt><dd>{formatBooleanLike(source.canRedistribute)}</dd></div>
             </dl>
             <div className="button-row">
-              <a className="button" href={source.homepageUrl}>Open source</a>
+              <Link className="button" href={`/sources/${source.id}`}>View details</Link>
+              <a className="secondary-button" href={source.homepageUrl}>Visit</a>
               {source.apiUrl && <a className="secondary-button" href={source.apiUrl}>API</a>}
             </div>
           </article>

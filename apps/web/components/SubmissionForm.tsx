@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { addReviewItem } from "@/lib/reviewQueue";
 
 const submissionTypes = ["Case", "Guidance link", "Template", "Statutory update", "Public agency material", "Correction"];
 
@@ -10,14 +11,19 @@ export function SubmissionForm() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-    const existing = JSON.parse(window.localStorage.getItem("agentcounsel-submissions") ?? "[]") as unknown[];
-    window.localStorage.setItem(
-      "agentcounsel-submissions",
-      JSON.stringify([...existing, { ...payload, submittedAt: new Date().toISOString(), reviewStatus: "local_mock_pending" }], null, 2)
-    );
+
+    addReviewItem({
+      type: String(formData.get("type") ?? ""),
+      title: String(formData.get("title") ?? ""),
+      url: String(formData.get("url") ?? ""),
+      jurisdiction: String(formData.get("jurisdiction") ?? ""),
+      topics: String(formData.get("topics") ?? ""),
+      description: String(formData.get("description") ?? ""),
+      contact: String(formData.get("contact") ?? "")
+    });
+
     event.currentTarget.reset();
-    setStatus("Submission saved locally for this prototype. A real review queue can replace this next.");
+    setStatus("Submission added to the local review queue.");
   }
 
   return (
@@ -46,7 +52,7 @@ export function SubmissionForm() {
       </label>
       <label>
         <span className="status">Why this matters</span>
-        <textarea className="textarea" name="description" placeholder="Briefly explain what this source is and why it should be indexed." />
+        <textarea className="textarea" name="description" placeholder="Briefly explain what this item is and why it should be indexed." />
       </label>
       <label>
         <span className="status">Optional contact</span>
