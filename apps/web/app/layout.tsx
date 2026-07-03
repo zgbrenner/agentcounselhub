@@ -20,13 +20,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <nav className="nav" aria-label="Primary navigation">
               <Link href="/cases">Cases</Link>
               <Link href="/guidance">Guidance</Link>
+              <Link href="/sources">Sources</Link>
               <Link href="/saved">Saved</Link>
               <Link href="/submit">Submit</Link>
             </nav>
           </header>
           <main className="main">{children}</main>
           <footer className="footer">
-            Prototype only. Not legal advice. AI-generated metadata and treatment signals require source verification and attorney review where appropriate.
+            Prototype only. Verify all generated metadata against primary sources before relying on it.
           </footer>
         </div>
       </body>
