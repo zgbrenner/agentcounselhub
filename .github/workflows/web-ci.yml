@@ -1,4 +1,4 @@
-name: Web CI
+name: CI
 
 on:
   pull_request:
@@ -37,3 +37,26 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+  ingestion:
+    name: Validate ingestion scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile ingestion scripts
+        run: python -m py_compile pipelines/ingest/scripts/normalize_courtlistener_seed.py
+
+      - name: Run seed normalization smoke test
+        run: |
+          python pipelines/ingest/scripts/normalize_courtlistener_seed.py \
+            --input pipelines/ingest/samples/courtlistener_opinions_sample.json \
+            --output data/normalized/cases.seed.json
+          test -s data/normalized/cases.seed.json
