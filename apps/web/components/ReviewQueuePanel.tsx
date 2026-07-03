@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { exportReviewQueue, readReviewQueue, removeReviewItem, updateReviewItem, type ReviewItem, type ReviewStatus } from "@/lib/reviewQueue";
 
@@ -48,6 +49,7 @@ export function ReviewQueuePanel() {
       <div className="button-row">
         <button className="button" type="button" onClick={() => setExportText(exportReviewQueue(items))} disabled={!items.length}>Show export JSON</button>
         <button className="secondary-button" type="button" onClick={refresh}>Refresh</button>
+        <Link className="secondary-button" href="/review/audit">Audit log</Link>
       </div>
 
       {exportText && <textarea className="textarea" readOnly value={exportText} aria-label="Review queue export JSON" />}
@@ -73,7 +75,7 @@ export function ReviewQueuePanel() {
             </dl>
             <label>
               <span className="status">Reviewer note</span>
-              <textarea className="textarea" value={item.reviewerNote ?? ""} onChange={(event) => updateNote(item.id, event.target.value)} />
+              <textarea className="textarea" defaultValue={item.reviewerNote ?? ""} onBlur={(event) => updateNote(item.id, event.target.value)} />
             </label>
             <div className="button-row">
               <button className="secondary-button" type="button" onClick={() => updateStatus(item.id, "pending")}>Pending</button>
