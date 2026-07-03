@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CaseSearch } from "@/components/CaseSearch";
 import { getAllCases, getAllCourts, getAllJurisdictions, getAllTopics } from "@/lib/data";
 
@@ -11,6 +12,10 @@ export default function CasesPage() {
           <p>
             Filter by case name, citation, court, jurisdiction, and topic. This MVP uses seed data, but the interface is built for real ingestion from open legal data sources.
           </p>
+          <div className="button-row">
+            <Link className="secondary-button" href="/cases/schema">View case record contract</Link>
+            <Link className="secondary-button" href="/api/cases/schema">Schema JSON</Link>
+          </div>
         </div>
       </section>
       <CaseSearch
