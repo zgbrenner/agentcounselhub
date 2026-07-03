@@ -125,7 +125,6 @@ export default function CasePage({ params }: { params: { slug: string } }) {
             <div className="button-row">
               <Link className="secondary-button" href={`/cases/${caseRecord.slug}/json`}>JSON</Link>
               <Link className="secondary-button" href={`/cases/${caseRecord.slug}/markdown`}>Markdown</Link>
-              <Link className="secondary-button" href={`/api/cases/${caseRecord.slug}`}>API</Link>
             </div>
           </section>
 
