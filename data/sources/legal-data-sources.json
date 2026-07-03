@@ -1,0 +1,69 @@
+[
+  {
+    "id": "courtlistener",
+    "name": "CourtListener / Free Law Project",
+    "type": "case_law",
+    "homepageUrl": "https://www.courtlistener.com/",
+    "apiUrl": "https://www.courtlistener.com/api/rest/v4/",
+    "accessMethod": "api",
+    "recommendedUse": "store_metadata_first",
+    "priority": "mvp_primary",
+    "attributionRequired": true,
+    "canStoreFullText": "verify_source_terms",
+    "canRedistribute": "verify_source_terms",
+    "notes": "Preferred first source for real case metadata, opinions, clusters, courts, citation relationships, and RECAP-linked public materials where legally available. Confirm current API terms and attribution rules before production ingestion."
+  },
+  {
+    "id": "harvard-cap",
+    "name": "Harvard Caselaw Access Project",
+    "type": "case_law",
+    "homepageUrl": "https://case.law/",
+    "apiUrl": "https://api.case.law/",
+    "accessMethod": "api_or_bulk_download",
+    "recommendedUse": "manual_review_required",
+    "priority": "mvp_secondary",
+    "attributionRequired": true,
+    "canStoreFullText": "verify_source_terms",
+    "canRedistribute": "verify_source_terms",
+    "notes": "Potential second source for historical case law. Verify current access, licensing, and redistribution terms before use."
+  },
+  {
+    "id": "justia",
+    "name": "Justia",
+    "type": "case_law",
+    "homepageUrl": "https://law.justia.com/",
+    "accessMethod": "web",
+    "recommendedUse": "link_and_summarize",
+    "priority": "later",
+    "attributionRequired": true,
+    "canStoreFullText": false,
+    "canRedistribute": false,
+    "notes": "Useful as a public source link and fallback metadata source. Do not copy full text unless terms clearly permit."
+  },
+  {
+    "id": "california-courts-self-help",
+    "name": "California Courts Self-Help Guide",
+    "type": "guidance",
+    "homepageUrl": "https://selfhelp.courts.ca.gov/",
+    "accessMethod": "web",
+    "recommendedUse": "link_and_summarize",
+    "priority": "mvp_guidance",
+    "attributionRequired": true,
+    "canStoreFullText": "verify_source_terms",
+    "canRedistribute": "verify_source_terms",
+    "notes": "Official court self-help guidance and forms. Prefer linking to canonical pages with jurisdiction and topic metadata."
+  },
+  {
+    "id": "yc-documents",
+    "name": "Y Combinator Documents",
+    "type": "templates",
+    "homepageUrl": "https://www.ycombinator.com/documents/",
+    "accessMethod": "web",
+    "recommendedUse": "link_and_summarize",
+    "priority": "mvp_guidance",
+    "attributionRequired": true,
+    "canStoreFullText": "verify_template_terms",
+    "canRedistribute": "verify_template_terms",
+    "notes": "Canonical public startup financing templates. Track version/source URL and verify terms before storing template text."
+  }
+]
