@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentcounselhub.local/schemas/legal-data-sources.schema.json",
+  "title": "AgentCounsel Hub Legal Data Source Registry",
+  "description": "Schema for public legal data, guidance, template, and agency source records used by AgentCounsel Hub.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "type",
+      "homepageUrl",
+      "accessMethod",
+      "recommendedUse",
+      "priority",
+      "attributionRequired",
+      "canStoreFullText",
+      "canRedistribute",
+      "notes"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "description": "Stable kebab-case source identifier."
+      },
+      "name": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Human-readable source name."
+      },
+      "type": {
+        "type": "string",
+        "enum": ["case_law", "guidance", "templates", "forms", "agency", "court", "bar", "other"],
+        "description": "Source category."
+      },
+      "homepageUrl": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://",
+        "description": "Canonical public homepage or landing page."
+      },
+      "apiUrl": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://",
+        "description": "Optional API endpoint or documentation URL."
+      },
+      "accessMethod": {
+        "type": "string",
+        "minLength": 2,
+        "description": "How the source should be accessed, such as api, web, bulk_download, or api_or_bulk_download."
+      },
+      "recommendedUse": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Conservative use guidance, such as store_metadata_first, link_and_summarize, or manual_review_required."
+      },
+      "priority": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Roadmap priority or candidate status."
+      },
+      "attributionRequired": {
+        "type": "boolean",
+        "description": "Whether attribution should be assumed required."
+      },
+      "canStoreFullText": {
+        "oneOf": [
+          { "type": "boolean" },
+          { "type": "string", "minLength": 2 }
+        ],
+        "description": "Whether full text storage is allowed, or a verification note."
+      },
+      "canRedistribute": {
+        "oneOf": [
+          { "type": "boolean" },
+          { "type": "string", "minLength": 2 }
+        ],
+        "description": "Whether redistribution is allowed, or a verification note."
+      },
+      "notes": {
+        "type": "string",
+        "minLength": 10,
+        "description": "Human review notes about provenance, use, and caution areas."
+      }
+    }
+  }
+}
