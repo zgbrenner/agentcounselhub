@@ -1,0 +1,28 @@
+[
+  {
+    "id": 107971,
+    "absolute_url": "/opinion/107971/miranda-v-arizona/",
+    "caseName": "Miranda v. Arizona",
+    "caseNameFull": "Miranda v. Arizona",
+    "citation": ["384 U.S. 436"],
+    "dateFiled": "1966-06-13",
+    "court": "scotus",
+    "court_name": "Supreme Court of the United States",
+    "plain_text": "Seed sample only. Replace with API payload or allowed source text during real ingestion.",
+    "download_url": "https://www.courtlistener.com/opinion/107971/miranda-v-arizona/",
+    "cluster": 107971
+  },
+  {
+    "id": 105221,
+    "absolute_url": "/opinion/105221/brown-v-board-of-education/",
+    "caseName": "Brown v. Board of Education",
+    "caseNameFull": "Brown v. Board of Education",
+    "citation": ["347 U.S. 483"],
+    "dateFiled": "1954-05-17",
+    "court": "scotus",
+    "court_name": "Supreme Court of the United States",
+    "plain_text": "Seed sample only. Replace with API payload or allowed source text during real ingestion.",
+    "download_url": "https://www.courtlistener.com/opinion/105221/brown-v-board-of-education/",
+    "cluster": 105221
+  }
+]
