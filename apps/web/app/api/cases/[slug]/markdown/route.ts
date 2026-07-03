@@ -1,5 +1,9 @@
-import { getCaseBySlug } from "@/lib/data";
+import { getAllCases, getCaseBySlug } from "@/lib/data";
 import { caseToMarkdown } from "@/lib/markdown";
+
+export function generateStaticParams() {
+  return getAllCases().map((caseRecord) => ({ slug: caseRecord.slug }));
+}
 
 export function GET(_request: Request, { params }: { params: { slug: string } }) {
   const caseRecord = getCaseBySlug(params.slug);
