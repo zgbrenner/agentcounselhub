@@ -109,6 +109,12 @@ The data source registry lives at:
 data/sources/legal-data-sources.json
 ```
 
+Validate the source registry with:
+
+```bash
+pnpm sources:validate
+```
+
 ## CI
 
 GitHub Actions validates:
@@ -116,6 +122,7 @@ GitHub Actions validates:
 - web app typecheck
 - web app lint
 - web app build
+- source registry validation
 - ingestion script compilation
 - ingestion normalization smoke test
 - web seed writer smoke test

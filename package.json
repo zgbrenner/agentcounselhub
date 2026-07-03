@@ -10,6 +10,7 @@
     "lint": "pnpm --filter @agentcounsel/web lint",
     "typecheck": "pnpm --filter @agentcounsel/web typecheck",
     "ingest:seed": "python pipelines/ingest/scripts/normalize_courtlistener_seed.py --input pipelines/ingest/samples/courtlistener_opinions_sample.json --output data/normalized/cases.seed.json && python pipelines/ingest/scripts/write_web_seed.py --input data/normalized/cases.seed.json --output apps/web/data/generated/cases.generated.json",
+    "sources:validate": "python pipelines/ingest/scripts/validate_source_registry.py --registry data/sources/legal-data-sources.json",
     "sources:propose": "python pipelines/ingest/scripts/import_source_proposals.py --registry data/sources/legal-data-sources.json --proposals pipelines/ingest/samples/source_proposals_sample.json --output data/sources/legal-data-sources.proposed.json"
   },
   "packageManager": "pnpm@9.12.3",

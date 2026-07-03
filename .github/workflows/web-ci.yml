@@ -52,7 +52,10 @@ jobs:
           python-version: "3.12"
 
       - name: Compile ingestion scripts
-        run: python -m py_compile pipelines/ingest/scripts/normalize_courtlistener_seed.py pipelines/ingest/scripts/write_web_seed.py pipelines/ingest/scripts/import_source_proposals.py
+        run: python -m py_compile pipelines/ingest/scripts/normalize_courtlistener_seed.py pipelines/ingest/scripts/write_web_seed.py pipelines/ingest/scripts/import_source_proposals.py pipelines/ingest/scripts/validate_source_registry.py
+
+      - name: Validate source registry
+        run: python pipelines/ingest/scripts/validate_source_registry.py --registry data/sources/legal-data-sources.json
 
       - name: Run normalization smoke test
         run: python pipelines/ingest/scripts/normalize_courtlistener_seed.py --input pipelines/ingest/samples/courtlistener_opinions_sample.json --output data/normalized/cases.seed.json
