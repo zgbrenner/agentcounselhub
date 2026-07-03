@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getAllSources, getSourceById } from "@/lib/sourceRegistry";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllSources().map((source) => ({ id: source.id }));
 }
