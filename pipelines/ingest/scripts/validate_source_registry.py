@@ -35,14 +35,32 @@ ALLOWED_SOURCE_TYPES = {
 }
 
 
-def load_registry(path: Path) -> list[dict[str, Any]]:
+def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
-        payload = json.load(handle)
+        return json.load(handle)
+
+
+def load_registry(path: Path) -> list[dict[str, Any]]:
+    payload = load_json(path)
 
     if not isinstance(payload, list):
         raise ValueError("Source registry must be a JSON list.")
 
     return payload
+
+
+def validate_schema_contract(path: Path) -> None:
+    schema = load_json(path)
+    required = schema.get("items", {}).get("required", [])
+    type_enum = schema.get("items", {}).get("properties", {}).get("type", {}).get("enum", [])
+
+    missing_required = sorted(set(REQUIRED_FIELDS) - set(required))
+    if missing_required:
+        raise ValueError(f"Schema is missing required fields used by validator: {', '.join(missing_required)}")
+
+    missing_types = sorted(ALLOWED_SOURCE_TYPES - set(type_enum))
+    if missing_types:
+        raise ValueError(f"Schema is missing source types used by validator: {', '.join(missing_types)}")
 
 
 def assert_url(value: str, field_name: str, source_id: str) -> None:
@@ -64,8 +82,8 @@ def validate_source(source: dict[str, Any]) -> None:
         raise ValueError(f"{source_id}: attributionRequired must be boolean.")
 
     for field in ["canStoreFullText", "canRedistribute"]:
-      if not isinstance(source[field], (bool, str)):
-          raise ValueError(f"{source_id}: {field} must be boolean or string note.")
+        if not isinstance(source[field], (bool, str)):
+            raise ValueError(f"{source_id}: {field} must be boolean or string note.")
 
     assert_url(str(source["homepageUrl"]), "homepageUrl", source_id)
 
@@ -95,7 +113,11 @@ def validate_registry(sources: list[dict[str, Any]]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Validate legal-data-sources.json.")
     parser.add_argument("--registry", required=True, type=Path, help="Path to legal-data-sources.json.")
+    parser.add_argument("--schema", type=Path, help="Optional JSON schema file to cross-check against validator constants.")
     args = parser.parse_args()
+
+    if args.schema:
+        validate_schema_contract(args.schema)
 
     sources = load_registry(args.registry)
     validate_registry(sources)
