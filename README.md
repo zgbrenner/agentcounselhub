@@ -75,8 +75,10 @@ Useful routes:
 /guidance
 /sources
 /sources/courtlistener
+/sources/schema
 /api/sources
 /api/sources/courtlistener
+/api/sources/schema
 /review
 /review/audit
 /review/proposals
@@ -114,6 +116,8 @@ The registry schema and field guide live at:
 ```txt
 data/sources/legal-data-sources.schema.json
 docs/SOURCE_REGISTRY_CONTRACT.md
+/sources/schema
+/api/sources/schema
 ```
 
 Validate the source registry and schema with:
