@@ -10,6 +10,7 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - /api/guidance
 - /api/sources
 - /api/sources/:id
+- /api/sources/schema
 - /cases/:slug/json
 - /cases/:slug/markdown
 
@@ -20,6 +21,7 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - /guidance
 - /sources
 - /sources/:id
+- /sources/schema
 - /review
 - /review/audit
 - /review/proposals
@@ -34,6 +36,7 @@ AgentCounsel Hub is an open legal research platform prototype with human-readabl
 - Respect source-specific license and attribution notes.
 - Prefer API endpoints over scraping HTML pages.
 - Use /api/sources to inspect source provenance and reuse notes.
+- Use /api/sources/schema to inspect the source registry contract.
 - Use /review/proposals to export approved local review items as source registry candidates.
 
 ## Privacy notes
