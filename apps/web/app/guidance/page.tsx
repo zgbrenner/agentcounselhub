@@ -13,6 +13,10 @@ export default function GuidancePage() {
           <p>
             This index links to public guidance and templates with concise metadata. The MVP intentionally avoids copying full articles or forms unless reuse terms are clear.
           </p>
+          <div className="button-row">
+            <Link className="secondary-button" href="/guidance/schema">View guidance contract</Link>
+            <Link className="secondary-button" href="/api/guidance/schema">Schema JSON</Link>
+          </div>
         </div>
       </section>
 
